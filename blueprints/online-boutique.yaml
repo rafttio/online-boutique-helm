@@ -37,7 +37,6 @@ grains:
     kind: helm
     depends-on: namespace
     spec:
-      namespace: '{{ .inputs.namespace }}'
       source:
         store: online-boutique
         path: helm-chart
