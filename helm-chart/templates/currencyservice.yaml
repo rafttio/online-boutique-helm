@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.currencyService.name }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.Namespace }}
 spec:
   selector:
     matchLabels:
@@ -43,7 +43,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.currencyService.name }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.Namespace }}
 spec:
   type: ClusterIP
   selector:
