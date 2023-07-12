@@ -22,6 +22,12 @@ grains:
         path: misc/k8s/namespace
       agent:
         name: aks-demo
+      scripts:
+        post-helm-install:
+          source:
+            store: online-boutique
+            path:  misc/scripts/set-namespace-permissions.sh
+          arguments: '{{ .inputs.namespace }}'
       inputs:
         - namespace_name: '{{ .inputs.namespace }}'
       env-vars: []
