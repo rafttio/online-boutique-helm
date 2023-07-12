@@ -24,7 +24,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: super-admin-cluster-role
+  name: super-admin-cluster-role-{{ .Values.namespace_name }}
 subjects:
 - kind: ServiceAccount
   name: torque-managed-identity
