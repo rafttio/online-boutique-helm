@@ -1,0 +1,53 @@
+spec_version: 2
+description: Raftt Demo (online-boutique)
+
+inputs:
+  namespace:
+    type: string
+
+outputs:
+  URL:
+    value: 'http://{{.grains.helm.scripts.post-helm-install.outputs.frontend}}'
+    kind: link
+  Develop with Raftt:
+    value: 'raftt connect {{.inputs.namespace}}'
+    kind: link
+
+grains:
+  namespace:
+    kind: helm
+    spec:
+      source:
+        store: online-boutique
+        path: misc/k8s/namespace
+      agent:
+        name: aks-playground
+      inputs:
+        - namespace_name: '{{ .inputs.namespace }}'
+      env-vars: []
+      commands:
+        - dep up misc/k8s/namespace
+  helm:
+    kind: helm
+    depends-on: namespace
+    spec:
+      source:
+        store: online-boutique
+        path: helm-chart
+      namespace: '{{ .inputs.namespace }}'
+      agent:
+        name: aks-playground
+      scripts:
+        post-helm-install:
+          source:
+            store: online-boutique
+            path:  misc/scripts/get-online-boutique-address.sh
+          arguments: '{{ .inputs.namespace }}'
+          outputs:
+            - frontend
+      inputs:
+        - namespace: '{{ .inputs.namespace }}'
+        - frontend.ingress.domain: 'azure-demo.raftt.io'
+      env-vars: []
+      commands:
+        - dep up helm-chart
