@@ -48,5 +48,3 @@ grains:
         - Namespace: '{{ .inputs.namespace }}'
         - frontend.ingress.domain: 'azure-demo.raftt.io'
       env-vars: []
-      commands:
-        - dep up helm-chart
