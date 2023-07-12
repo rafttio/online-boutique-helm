@@ -4,4 +4,6 @@ set -e
 echo "set permissions"
 NAMESPACE=$1
 
-kubectl create clusterrolebinding app-sa-cluster-admin-$NAMESPACE --clusterrole=cluster-admin --serviceaccount=$NAMESPACE:torque-managed-identity
+
+kubectl create serviceaccount torque-managed-identity --namespace=$NAMESPACE
+kubectl create rolebinding rolebinding-$NAMESPACE --namespace=$NAMESPACE --serviceaccount=$NAMESPACE:torque-managed-identity --clusterrole=cluster-admin
