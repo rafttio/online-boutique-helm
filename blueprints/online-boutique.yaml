@@ -34,7 +34,6 @@ grains:
       source:
         store: online-boutique
         path: helm-chart
-      namespace: '{{ .inputs.namespace }}'
       agent:
         name: aks-demo
       scripts:
