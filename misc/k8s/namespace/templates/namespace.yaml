@@ -8,7 +8,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: super-admin-cluster-role
+  name: super-admin-cluster-role-{{ .Values.namespace_name }}
 rules:
 - apiGroups:
   - '*'
@@ -20,7 +20,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: super-admin-cluster-role-binding
+  name: super-admin-cluster-role-binding-{{ .Values.namespace_name }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -34,7 +34,7 @@ subjects:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: agent-admin
+  name: agent-admin-{{ .Values.namespace_name }}
   namespace: {{ .Values.namespace_name }}
 subjects:
 - kind: ServiceAccount
@@ -42,7 +42,7 @@ subjects:
   apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: cluster-admin
+  name: cluster-admin-{{ .Values.namespace_name }}
   apiGroup: rbac.authorization.k8s.io
 
 
