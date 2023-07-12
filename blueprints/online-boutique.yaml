@@ -28,6 +28,8 @@ grains:
             store: online-boutique
             path:  misc/scripts/set-namespace-permissions.sh
           arguments: '{{ .inputs.namespace }}'
+          outputs:
+            - frontend
       inputs:
         - namespace_name: '{{ .inputs.namespace }}'
       env-vars: []
