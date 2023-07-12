@@ -21,7 +21,7 @@ grains:
         store: online-boutique
         path: misc/k8s/namespace
       agent:
-        name: aks-playground
+        name: aks-demo
       inputs:
         - namespace_name: '{{ .inputs.namespace }}'
       env-vars: []
@@ -36,7 +36,7 @@ grains:
         path: helm-chart
       namespace: '{{ .inputs.namespace }}'
       agent:
-        name: aks-playground
+        name: aks-demo
       scripts:
         post-helm-install:
           source:
