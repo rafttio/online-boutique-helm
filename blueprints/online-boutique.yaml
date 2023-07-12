@@ -45,7 +45,7 @@ grains:
           outputs:
             - frontend
       inputs:
-        - namespace: '{{ .inputs.namespace }}'
+        - Namespace: '{{ .inputs.namespace }}'
         - frontend.ingress.domain: 'azure-demo.raftt.io'
       env-vars: []
       commands:
