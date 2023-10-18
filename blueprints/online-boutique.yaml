@@ -21,7 +21,7 @@ grains:
         store: online-boutique
         path: misc/k8s/namespace
       agent:
-        name: aks-demo
+        name: raftt-demo
       scripts:
         post-helm-install:
           source:
@@ -44,7 +44,7 @@ grains:
         store: online-boutique
         path: helm-chart
       agent:
-        name: aks-demo
+        name: raftt-demo
       scripts:
         post-helm-install:
           source:
